@@ -18,7 +18,7 @@
 <img src="https://i.imgur.com/mROx7Bg.png" alt="Maya RPG App" border="0">
 </p>
 
-Este projeto é um aplicativo mobile desenvolvido para apoiar o grupo Maya RPG — voltado para saúde global e qualidade de vida — trazendo mais praticidade ao processo de cadastro de pacientes. Por meio dele, é possível registrar os dados de cada paciente de forma organizada e atribuir atividades personalizadas para serem realizadas em casa, permitindo que a equipe Maya faça o acompanhamento e as publicações de forma manual e individualizada para cada pessoa atendida.
+Este projeto é um aplicativo mobile desenvolvido para apoiar o grupo Maya RPG (Reeducação Postural Global), trazendo mais praticidade ao processo de cadastro de pacientes. Por meio dele, é possível registrar os dados de cada paciente de forma organizada e atribuir atividades personalizadas para serem realizadas em casa, permitindo que a equipe Maya faça o acompanhamento e as publicações de forma manual e individualizada para cada pessoa atendida.
 
 <br><br>
 
@@ -101,4 +101,6 @@ Este projeto está licenciado sob uma Licença Creative Commons Atribuição 4.0
 
 Aqui estão as referências usadas no projeto.
 
-1. <https://github.com/iuricode/readme-template>
+1. 
+2.
+3.
