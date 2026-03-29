@@ -167,5 +167,5 @@ bash backup.sh
 
 
 <p align="center">
-<img src="https://imgur.com/We5CocC" alt="Coder" border="0">
+<img src="https://imgur.com/gallery/me-hvmsWAW#We5CocC" alt="Coder" border="0">
 </p>
