@@ -163,3 +163,9 @@ bash backup.sh
     ├── codigo/             # backups do código-fonte (.tar.gz)
     └── banco/              # backups do banco de dados (.db.gz)
 ```
+
+
+
+<p align="center">
+<img src="[https://i.imgur.com/mROx7Bg.png](https://imgur.com/We5CocC)" alt="Maya RPG App" border="0">
+</p>
