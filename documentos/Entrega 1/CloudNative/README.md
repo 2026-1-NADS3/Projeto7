@@ -163,7 +163,7 @@ bash backup.sh
     ├── codigo/             # backups do código-fonte (.tar.gz)
     └── banco/              # backups do banco de dados (.db.gz)
 ```
-
+## 
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/2026-1-NADS3/Projeto7/main/imagens/pfp.png" alt="Profile Picture" width="200">
