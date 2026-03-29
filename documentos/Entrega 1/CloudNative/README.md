@@ -167,5 +167,5 @@ bash backup.sh
 
 
 <p align="center">
-<img src="[https://i.imgur.com/mROx7Bg.png](https://imgur.com/We5CocC)" alt="Maya RPG App" border="0">
+<img src="https://imgur.com/We5CocC" alt="Coder" border="0">
 </p>
