@@ -21,11 +21,11 @@
 </p>
 
 
-<div class="pfp-container">
-    <img src="root/imagens/pfp.png" alt="Profile 0">
-    <img src="root/imagens/pfp1.png" alt="Profile 1">
-    <img src="root/imagens/pfp2.png" alt="Profile 2">
-    <img src="root/imagens/pfp3.png" alt="Profile 3">
+<div class="pfp-row">
+    <img src="https://raw.githubusercontent.com/2026-1-NADS3/Projeto7/main/imagens/pfp.png" alt="PFP">
+    <img src="https://raw.githubusercontent.com/2026-1-NADS3/Projeto7/main/imagens/pfp1.png" alt="PFP 1">
+    <img src="https://raw.githubusercontent.com/2026-1-NADS3/Projeto7/main/imagens/pfp2.png" alt="PFP 2">
+    <img src="https://raw.githubusercontent.com/2026-1-NADS3/Projeto7/main/imagens/pfp3.png" alt="PFP 3">
 </div>
 
 Este projeto é um aplicativo mobile desenvolvido para apoiar o grupo Maya RPG (Reeducação Postural Global), trazendo mais praticidade ao processo de cadastro de pacientes. Por meio dele, é possível registrar os dados de cada paciente de forma organizada e atribuir atividades personalizadas para serem realizadas em casa, permitindo que a equipe Maya faça o acompanhamento e as publicações de forma manual e individualizada para cada pessoa atendida.
