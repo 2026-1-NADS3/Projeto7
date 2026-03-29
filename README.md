@@ -14,11 +14,18 @@
 
 ## Descrição
 
+<p align="center">
+
+<img src="https://i.imgur.com/mROx7Bg.png" alt="Maya RPG App" border="0">
+
+</p>
+
+
 <div class="pfp-container">
-    <img src="root/imgs/pfp.png" alt="Profile 0">
-    <img src="root/imgs/pfp1.png" alt="Profile 1">
-    <img src="root/imgs/pfp2.png" alt="Profile 2">
-    <img src="root/imgs/pfp3.png" alt="Profile 3">
+    <img src="root/imagens/pfp.png" alt="Profile 0">
+    <img src="root/imagens/pfp1.png" alt="Profile 1">
+    <img src="root/imagens/pfp2.png" alt="Profile 2">
+    <img src="root/imagens/pfp3.png" alt="Profile 3">
 </div>
 
 Este projeto é um aplicativo mobile desenvolvido para apoiar o grupo Maya RPG (Reeducação Postural Global), trazendo mais praticidade ao processo de cadastro de pacientes. Por meio dele, é possível registrar os dados de cada paciente de forma organizada e atribuir atividades personalizadas para serem realizadas em casa, permitindo que a equipe Maya faça o acompanhamento e as publicações de forma manual e individualizada para cada pessoa atendida.
