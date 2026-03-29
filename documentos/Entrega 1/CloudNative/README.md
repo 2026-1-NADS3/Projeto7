@@ -163,9 +163,3 @@ bash backup.sh
     ├── codigo/             # backups do código-fonte (.tar.gz)
     └── banco/              # backups do banco de dados (.db.gz)
 ```
-
-
-
-<p align="center">
-<img src="https://imgur.com/gallery/me-hvmsWAW#We5CocC" alt="Coder" border="0">
-</p>
