@@ -25,19 +25,15 @@
   <tr>
     <td align="center">
       <img src="https://raw.githubusercontent.com/2026-1-NADS3/Projeto7/main/imagens/pfp.png" width="100px" alt="PFP 1"/><br />
-      <sub><b>Nome 1</b></sub>
     </td>
     <td align="center">
       <img src="https://raw.githubusercontent.com/2026-1-NADS3/Projeto7/main/imagens/pfp1.png" width="100px" alt="PFP 2"/><br />
-      <sub><b>Nome 2</b></sub>
     </td>
     <td align="center">
       <img src="https://raw.githubusercontent.com/2026-1-NADS3/Projeto7/main/imagens/pfp2.png" width="100px" alt="PFP 3"/><br />
-      <sub><b>Nome 3</b></sub>
     </td>
     <td align="center">
       <img src="https://raw.githubusercontent.com/2026-1-NADS3/Projeto7/main/imagens/pfp3.png" width="100px" alt="PFP 4"/><br />
-      <sub><b>Nome 4</b></sub>
     </td>
   </tr>
 </table>
