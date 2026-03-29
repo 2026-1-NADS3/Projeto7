@@ -1,155 +1,86 @@
-# Relatório Técnico — Scripts de Infraestrutura e Automação
+# Relatório - Scripts de Infraestrutura e Automação Linux
 ## MayaRPG Backend
 
-**Disciplina:** Infraestrutura e Automação com Linux  
-**Projeto:** MayaRPG Backend (Spring Boot 3.5 + Java 21 + SQLite + JWT)  
-**Grupo:** com.noxcrew  
+---
+
+## Introdução
+
+O objetivo deste trabalho foi desenvolver scripts Shell/Bash para automatizar tarefas repetitivas do ciclo de desenvolvimento do MayaRPG Backend, um projeto de API REST feito em Java com Spring Boot 3.5, Maven e SQLite.
+
+Sem automação, configurar o ambiente, iniciar a aplicação, monitorar o processo e fazer backups exige vários comandos manuais que são fáceis de errar, especialmente na hora de lembrar os parâmetros do Java e as variáveis do Spring Boot. Os scripts foram feitos pra resolver exatamente isso.
 
 ---
 
-## 1. Introdução
+## Scripts desenvolvidos
 
-O MayaRPG Backend é uma API REST desenvolvida em Java com Spring Boot, responsável por autenticação de usuários via JWT e gerenciamento de pacientes de uma aplicação RPG. O projeto utiliza SQLite como banco de dados e Maven como ferramenta de build.
+### setup_ambiente.sh
 
-Este relatório descreve os quatro scripts Shell/Bash desenvolvidos para automatizar o ciclo de desenvolvimento do projeto, reduzir erros manuais e aumentar a produtividade da equipe.
+Este script foi o ponto de partida. Ele instala Java 21, Maven 3.9.6 e SQLite3, configura o `JAVA_HOME` e cria um arquivo `.env` com as variáveis do projeto (porta, JWT secret, caminho do banco).
 
----
+A principal vantagem é que qualquer pessoa pode clonar o repositório e rodar `sudo bash setup_ambiente.sh` pra ter o ambiente configurado sem precisar seguir um passo a passo manual. O script já verifica se as ferramentas estão instaladas antes de instalar de novo, então não tem problema rodar mais de uma vez.
 
-## 2. Problema: O Ciclo Manual de Desenvolvimento
-
-Sem automação, cada membro da equipe precisaria executar manualmente uma sequência de passos para configurar o ambiente, iniciar a aplicação, monitorá-la e garantir backups. Esse processo é lento, propenso a erros e dificulta a integração de novos desenvolvedores.
-
-Tarefas repetitivas identificadas no projeto MayaRPG:
-
-- Instalar Java 21 e Maven na versão correta para o `spring-boot-starter-parent 3.5.11`
-- Configurar variáveis de ambiente como `JAVA_HOME` e `JWT_SECRET`
-- Compilar o projeto com `mvn clean package -DskipTests`
-- Iniciar o JAR gerado (`mayarpg-0.0.1-SNAPSHOT.jar`) com os parâmetros corretos
-- Verificar se os endpoints `/api/auth/login`, `/api/auth/register` e `/api/admin/pacientes` estão respondendo
-- Fazer backup do `mayarpg.db` antes de alterações no banco
-- Monitorar uso de memória do processo Java em execução
+**Conceitos utilizados:** variáveis de ambiente exportadas via `/etc/environment`, redirecionamento de saída (`>>`) pra salvar o log da instalação, pipes para verificar versões (`java -version 2>&1 | grep -q "21"`), e `chmod 600` no arquivo `.env` pra proteger as credenciais.
 
 ---
 
-## 3. Solução: Scripts de Automação
+### monitoramento.sh
 
-### 3.1 `setup_ambiente.sh` — Configuração do Ambiente
+A ideia aqui foi ter visibilidade sobre o que está acontecendo na máquina e na aplicação. O script coleta uso de CPU, memória, disco e informações do processo Java do MayaRPG (PID, memória consumida, conexões ativas).
 
-**Problema resolvido:** Garantir que todo desenvolvedor trabalhe com as mesmas versões de Java (21) e Maven (3.9.6), independente do sistema operacional.
+Uma parte que achei interessante foi a análise dos logs do Spring Boot: o script usa `tail -n 100 | grep | wc -l` pra contar quantos erros e acessos nos endpoints `/api/auth/login` e `/api/auth/register` aconteceram nas últimas 100 linhas do log. Isso ajuda bastante na hora de debugar.
 
-**Como funciona:** O script verifica se cada ferramenta já está instalada antes de instalar, evitando duplicações. Cria um arquivo `.env` com as variáveis de ambiente do projeto, incluindo o segredo JWT, a porta da aplicação e o caminho do banco SQLite.
+O modo `--watch` fica atualizando as métricas a cada 30 segundos, o que é útil pra acompanhar testes de carga. O modo `--relatorio` salva tudo em um arquivo `.txt` com data e hora.
 
-**Impacto no ciclo de desenvolvimento:** Reduz o tempo de onboarding de um novo desenvolvedor de horas para minutos. Elimina erros causados por versões incompatíveis de Java (o projeto exige Java 21 conforme `<java.version>21</java.version>` no `pom.xml`).
-
-**Conceitos utilizados:**
-- Variáveis de ambiente exportadas para o sistema (`/etc/environment`)
-- Redirecionamento de saída (`>>`) para log de instalação
-- Pipes para verificar versões instaladas (`java -version 2>&1 | grep -q "21"`)
-- Permissões Linux (`chmod 600`) para proteger o arquivo `.env` com credenciais
+**Conceitos utilizados:** pipes encadeados (`ps aux | grep jar | grep -v grep | awk`), `tee` para exibir e salvar ao mesmo tempo, variáveis de ambiente como limites configuráveis de alerta, e cron jobs para execução automática periódica.
 
 ---
 
-### 3.2 `monitoramento.sh` — Coleta de Métricas e Logs
+### backup.sh
 
-**Problema resolvido:** Ter visibilidade sobre o comportamento da aplicação em tempo real, especialmente o consumo de memória do processo Java (que pode crescer) e os acessos aos endpoints de autenticação.
+O `mayarpg.db` é o único arquivo de persistência de dados em ambiente de desenvolvimento, então perder ele seria um problema sério. O script faz um dump SQL usando `sqlite3` antes de compactar com gzip, o que é mais seguro do que só copiar o arquivo binário porque garante consistência mesmo com a aplicação rodando.
 
-**Como funciona:** Coleta métricas de CPU, memória e disco do sistema operacional, além de métricas específicas do processo Java do MayaRPG. Analisa os logs do Spring Boot para contar acessos aos endpoints `/api/auth/login` e `/api/auth/register`, e registra alertas quando limites configuráveis são ultrapassados.
+Para o código-fonte, cria um `.tar.gz` excluindo automaticamente a pasta `target/`, `.git/` e arquivos `.class`, que não precisam ser versionados manualmente. Cada backup gera um `.manifest` com checksum MD5 pra verificar a integridade depois.
 
-**Impacto no ciclo de desenvolvimento:** Permite identificar gargalos de performance antes que causem problemas em produção. O modo `--watch` (execução contínua a cada 30 segundos) é especialmente útil durante testes de carga. O modo `--relatorio` gera documentação de performance que pode ser compartilhada com a equipe.
+A rotação automática remove os backups mais antigos quando passa do limite configurado (padrão: 7), então não precisa se preocupar com o disco enchendo.
 
-**Conceitos utilizados:**
-- Pipes encadeados para filtrar informações de processos (`ps aux | grep jar | grep -v grep | awk '{print $2}'`)
-- Redirecionamento duplo com `tee` para exibir e salvar simultaneamente
-- Variáveis de ambiente como limiares configuráveis de alerta
-- Análise de logs por pipes (`tail -n 100 | grep -i "ERROR" | wc -l`)
+**Conceitos utilizados:** pipe pra dump compactado (`sqlite3 mayarpg.db .dump | gzip > arquivo.gz`), redirecionamento pra criar manifests (`cat > arquivo`), cron jobs pra backup automático, e variáveis de ambiente pra configurar a política de retenção.
 
 ---
 
-### 3.3 `backup.sh` — Backup Automatizado
+### gerenciar_servico.sh
 
-**Problema resolvido:** O `mayarpg.db` (SQLite) é o único ponto de persistência de dados do projeto em desenvolvimento. Uma corrupção ou exclusão acidental do arquivo significa perda total dos dados de pacientes e usuários cadastrados.
+Este foi o script mais trabalhoso. Ele encapsula toda a lógica de iniciar o backend com os parâmetros corretos do Java e do Spring Boot, o que no dia a dia evita erros de digitar o comando errado.
 
-**Como funciona:** Realiza dump SQL do banco via `sqlite3` (garantindo consistência mesmo com a aplicação em execução) e compacta com `gzip`. Para o código-fonte, cria um `.tar.gz` excluindo automaticamente a pasta `target/`, `.git/` e arquivos `.class`, que podem ser regenerados pelo Maven. Cada backup recebe um checksum MD5 para verificação de integridade. A rotação automática mantém apenas os 7 backups mais recentes.
+O comando `start` verifica se o JAR existe, compila automaticamente se não existir, inicia o processo em background com `nohup`, salva o PID em arquivo e fica lendo o log do Spring Boot esperando aparecer a mensagem `Started MayarpgApplication` pra confirmar que subiu certo.
 
-**Impacto no ciclo de desenvolvimento:** Permite fazer alterações experimentais no banco com segurança, sabendo que existe backup. O comando `--restaurar` permite desfazer migrações problemáticas rapidamente.
+O watchdog foi a parte mais interessante: fica num loop infinito verificando se o processo ainda está ativo a cada 15 segundos. Após 3 falhas consecutivas, executa o restart automaticamente. Isso é útil em ambiente de desenvolvimento compartilhado onde a aplicação pode ser derrubada por acidente.
 
-**Conceitos utilizados:**
-- Pipes para dump compactado (`sqlite3 mayarpg.db .dump | gzip > backup.db.gz`)
-- Redirecionamento para criação de manifests com metadados (`cat > arquivo.manifest`)
-- Cron jobs para automação periódica sem intervenção manual
-- Variáveis de ambiente para configurar política de retenção
+O comando `logs` usa `tail -f` com pipe pra colorizar as linhas em vermelho (ERROR), amarelo (WARN) ou branco normal, o que facilita muito a leitura do log do Spring Boot.
+
+**Conceitos utilizados:** gerenciamento de processos (`kill -TERM` pra encerramento gracioso e `kill -KILL` pra forçado), PID file pra rastrear o processo, `nohup` com redirecionamento pra rodar em background (`>> app.log 2>&1 &`), loop do watchdog com contador de falhas, e pipes pra colorização do log em tempo real.
 
 ---
 
-### 3.4 `gerenciar_servico.sh` — Gerenciamento de Processos
+## Como os scripts facilitam o desenvolvimento
 
-**Problema resolvido:** Iniciar o MayaRPG Backend requer a combinação correta de parâmetros JVM, variáveis de ambiente Spring Boot e configurações JWT. Fazer isso manualmente a cada reinicialização é trabalhoso e sujeito a erros.
+Antes dos scripts, algumas tarefas eram bem chatas no dia a dia:
 
-**Como funciona:** Encapsula toda a lógica de ciclo de vida da aplicação. No comando `start`, verifica se o JAR existe (compilando automaticamente se necessário), inicia o processo em background com `nohup`, salva o PID em arquivo e aguarda a confirmação de inicialização lendo o log do Spring Boot. O watchdog executa em loop, verificando a cada 15 segundos se o processo está ativo, e realiza restart automático após 3 falhas consecutivas.
+- Lembrar de passar `-Dspring.profiles.active=dev -Djwt.secret=... -Dserver.port=8080` toda vez que ia iniciar a aplicação
+- Fazer backup manual do `mayarpg.db` antes de testar migrações
+- Ficar abrindo o gerenciador de tarefas pra ver se o processo Java estava consumindo memória demais
+- Quando a aplicação caía, perceber só quando alguém tentava acessar e aí ir reiniciar manualmente
 
-**Impacto no ciclo de desenvolvimento:** Elimina a necessidade de lembrar parâmetros JVM e variáveis de ambiente a cada reinicialização. O watchdog é essencial em ambiente de desenvolvimento compartilhado, onde a aplicação pode ser derrubada acidentalmente. O comando `logs` com colorização por nível (vermelho para ERROR, amarelo para WARN) acelera o debug.
-
-**Conceitos utilizados:**
-- Gerenciamento de processos com `kill -TERM` (encerramento gracioso) e `kill -KILL` (forçado)
-- PID file para rastrear o processo entre execuções do script
-- Redirecionamento com `nohup` para execução em background (`>> app.log 2>&1 &`)
-- Pipes para colorização de logs em tempo real (`tail -f | while IFS= read -r linha`)
-- Loop de watchdog com contagem de falhas consecutivas
+Com os scripts isso tudo virou um comando só. O fluxo ficou bem mais simples: `bash gerenciar_servico.sh start` pra subir, `bash monitoramento.sh --watch` pra acompanhar, `bash backup.sh` antes de mudanças grandes, e o watchdog rodando em background pra garantir que a aplicação vai se recuperar sozinha se cair.
 
 ---
 
-## 4. Conceitos Linux Demonstrados
+## Conceitos aplicados
 
-| Conceito | Onde é usado | Exemplo |
-|----------|-------------|---------|
-| **Pipes** | Todos os scripts | `ps aux \| grep jar \| grep -v grep \| awk '{print $2}'` |
-| **Redirecionamento** | Todos os scripts | `echo "PID" > mayarpg.pid`, `logs >> app.log` |
-| **Variáveis de ambiente** | setup, gerenciar | `export JAVA_HOME`, `SPRING_PROFILES_ACTIVE=dev` |
-| **Cron jobs** | backup, monitoramento | `0 2 * * * bash backup.sh` |
-| **Permissões** | setup | `chmod 600 .env`, `chmod +x scripts` |
-| **Gerenciamento de processos** | gerenciar | `kill -TERM $PID`, `nohup ... &`, PID file |
-| **Funções Bash** | Todos os scripts | Funções `log()`, `obter_pid()`, `backup_banco()` |
-| **Arrays e loops** | gerenciar, backup | Loop de watchdog, rotação de backups |
-| **Condicionais** | Todos os scripts | Verificações de existência, limites de alerta |
-
----
-
-## 5. Como os Scripts Facilitam o Ciclo de Desenvolvimento
-
-### Fase de Setup (uma vez por máquina)
-```
-Antes: ~2 horas de configuração manual, documentação desatualizada
-Depois: sudo bash setup_ambiente.sh → ambiente pronto em ~10 minutos
-```
-
-### Fase de Desenvolvimento (diário)
-```
-Antes: java -jar target/mayarpg-*.jar -Dserver.port=8080 -Djwt.secret=... (erro-propenso)
-Depois: bash gerenciar_servico.sh start (um comando, configurações centralizadas)
-```
-
-### Fase de Debug
-```
-Antes: Procurar manualmente no log do Spring Boot por erros
-Depois: bash gerenciar_servico.sh logs (logs coloridos em tempo real)
-         bash monitoramento.sh (métricas + contagem de erros)
-```
-
-### Fase de Deploy/Atualização
-```
-Antes: Fazer backup manual, parar aplicação, compilar, iniciar, torcer
-Depois:
-  bash backup.sh                      # backup de segurança
-  bash gerenciar_servico.sh stop      # parar graciosamente
-  bash gerenciar_servico.sh build     # compilar nova versão
-  bash gerenciar_servico.sh start     # iniciar
-  bash gerenciar_servico.sh status    # confirmar endpoints ativos
-```
-
----
-
-## 6. Conclusão
-
-Os quatro scripts desenvolvidos cobrem o ciclo completo de desenvolvimento do MayaRPG Backend, desde a configuração inicial do ambiente até o monitoramento contínuo em produção. A automação elimina tarefas repetitivas, padroniza configurações entre os membros da equipe e aumenta a confiabilidade do processo de desenvolvimento.
-
-O uso consistente de pipes, redirecionamento, variáveis de ambiente e cron jobs demonstra como o Shell Bash é uma ferramenta poderosa para orquestrar aplicações Java complexas em ambiente Linux, mesmo sem ferramentas de terceiros como Docker ou Kubernetes.
+| Conceito | Como foi usado |
+|----------|---------------|
+| Pipes | Filtrar processos, analisar logs, dump do banco |
+| Redirecionamento | Gravar logs (`>>`), criar arquivos de config (`>`), rodar em background (`2>&1`) |
+| Variáveis de ambiente | Configurar Java, Maven, Spring Boot, JWT |
+| Cron jobs | Backup e monitoramento automáticos |
+| Permissões | `chmod 600` no `.env`, `chmod +x` nos scripts |
+| Gerenciamento de processos | PID file, SIGTERM, SIGKILL, watchdog |
