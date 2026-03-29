@@ -8,7 +8,7 @@
 <br><br>
 ### UserExperience 
 
-<b>Cauan Modeira - [Entrega completa](https://github.com/fecaphub/Template_PI/blob/main/documentos/https://github.com/2026-1-NADS3/Projeto7/tree/main/documentos/Entrega%201/UserExperience)</b>
+<b>Cauan Modeira - [Entrega completa](https://github.com/2026-1-NADS3/Projeto7/tree/main/documentos/Entrega%201/UserExperience)</b>
 <br><br>
 ### Programação Mobile
 
