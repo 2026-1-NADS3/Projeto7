@@ -109,17 +109,3 @@ Para rodar o frontend em ambiente de desenvolvimento, você precisará das segui
 # 4. Execute a configuração "app" clicando no botão Run (▶) ou com Shift+F10
 #    para iniciar o teste em tempo real no emulador
 ```
-
-## 📋 Licença/License
-
-<a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">
-Este projeto está licenciado sob uma Licença Creative Commons Atribuição 4.0 Internacional.
-</a>
-
-## 🎓 Referências
-
-Aqui estão as referências usadas no projeto.
-
-1. 
-2.
-3.
