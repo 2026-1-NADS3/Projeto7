@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Aplicativo_Maya">
+
+        <!-- Splash: ponto de entrada do app -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MainActivity: gerencia os fragments com o footer -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
+
+        <!-- Telas fora do footer (fluxo de autenticação) -->
+        <activity
+            android:name=".Login_Maya"
+            android:exported="false" />
+
+        <activity
+            android:name=".cadastro"
+            android:exported="false" />
+
+        <!-- Telas de detalhe abertas por cima dos fragments -->
+        <activity
+            android:name=".ListaExercicioActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ExercicioInActivity"
+            android:exported="false" />
+
+        <!-- REMOVIDAS: Homepage, ExercicioActivity, ListaExercicio (viraram Fragments) -->
+        <!-- REMOVIDA: exercicio_in (virou ExercicioInActivity) -->
+
+    </application>
+
+</manifest>
