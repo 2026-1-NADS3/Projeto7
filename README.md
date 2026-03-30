@@ -8,10 +8,9 @@
 
 ## NoxCrew
 
-## Integrantes: <a href="https://www.linkedin.com/in/victorbarq/">Victor de Camargo</a>, <a href="https://www.linkedin.com/in/victorbarq/">Rogério Rodrigues</a>, <a href="https://www.linkedin.com/in/victorbarq/">Cauan Moreira</a>, <a href="https://www.linkedin.com/in/victorbarq/">André Ferreira</a>
+## Integrantes: <a href="https://www.linkedin.com/in/victor-cmrg/">Victor Camargo</a>, <a href="https://www.linkedin.com/in/rogeriorv/">Rogério Rodrigues</a>, <a href="https://www.linkedin.com/in/cauan-moreira-2a9477335/">Cauan Moreira</a>, <a href="https://www.linkedin.com/in/andre-ferreira-ab5818379/">André Ferreira</a>
 
-## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Dr. Victor Von Doom</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Saitama</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Strange</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Yoda</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Gero</a>
-
+## Professores Orientadores: <a href="https://www.linkedin.com/in/aimarlopes/">Aimar Lopes</a>, <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco Escobar</a>, <a href="https://www.linkedin.com/in/rodrigo-da-rosa-phd/">Rodrigo Rosa</a>, <a href="https://www.linkedin.com/in/jefferson-o-silva/">Jefferson Silva</a>
 ## Descrição
 
 <p align="center">
