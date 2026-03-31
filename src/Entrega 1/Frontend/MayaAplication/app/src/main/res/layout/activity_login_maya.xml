@@ -12,16 +12,14 @@
 
     <ImageView
         android:id="@+id/img_fundo_Login"
-        android:layout_width="393dp"
-        android:layout_height="540dp"
+        android:layout_width="455dp"
+        android:layout_height="682dp"
         android:layout_marginTop="280dp"
-        android:layout_marginBottom="195dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.695"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339"
+        app:layout_constraintVertical_bias="0.352"
         app:srcCompat="@drawable/background_login" />
 
     <ImageView
@@ -73,11 +71,13 @@
         app:layout_constraintTop_toBottomOf="@+id/txtLogin" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtCadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
         android:text="Não possui uma conta? Cadastre-se!"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLogar" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtEsqueciSenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

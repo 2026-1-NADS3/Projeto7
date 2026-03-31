@@ -8,10 +8,9 @@
 
 ## NoxCrew
 
-## Integrantes: <a href="https://www.linkedin.com/in/victorbarq/">Victor de Camargo</a>, <a href="https://www.linkedin.com/in/victorbarq/">Rogério Rodrigues</a>, <a href="https://www.linkedin.com/in/victorbarq/">Cauan Moreira</a>, <a href="https://www.linkedin.com/in/victorbarq/">André Ferreira</a>
+## Integrantes: <a href="https://www.linkedin.com/in/victor-cmrg/">Victor Camargo</a>, <a href="https://www.linkedin.com/in/rogeriorv/">Rogério Rodrigues</a>, <a href="https://www.linkedin.com/in/cauan-moreira-2a9477335/">Cauan Moreira</a>, <a href="https://www.linkedin.com/in/andre-ferreira-ab5818379/">André Ferreira</a>
 
-## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Dr. Victor Von Doom</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Saitama</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Strange</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Yoda</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Gero</a>
-
+## Professores Orientadores: <a href="https://www.linkedin.com/in/aimarlopes/">Aimar Lopes</a>, <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco Escobar</a>, <a href="https://www.linkedin.com/in/rodrigo-da-rosa-phd/">Rodrigo Rosa</a>, <a href="https://www.linkedin.com/in/jefferson-o-silva/">Jefferson Silva</a>
 ## Descrição
 
 <p align="center">
@@ -110,17 +109,3 @@ Para rodar o frontend em ambiente de desenvolvimento, você precisará das segui
 # 4. Execute a configuração "app" clicando no botão Run (▶) ou com Shift+F10
 #    para iniciar o teste em tempo real no emulador
 ```
-
-## 📋 Licença/License
-
-<a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer">
-Este projeto está licenciado sob uma Licença Creative Commons Atribuição 4.0 Internacional.
-</a>
-
-## 🎓 Referências
-
-Aqui estão as referências usadas no projeto.
-
-1. 
-2.
-3.
