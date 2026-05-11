@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="Azul_Maya">#32C0D2</color>
+    <color name="Vermelho_Maya">#F37662</color>
+    <color name="Cinza_Claro">#EFEFEF</color>
+
+</resources>

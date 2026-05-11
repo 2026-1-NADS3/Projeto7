@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Azul_Maya"
+    tools:context=".cadastro">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="436dp"
+        android:layout_height="751dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.25"
+        app:srcCompat="@drawable/background_login" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="160dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_maya" />
+
+    <TextView
+        android:id="@+id/txtCadastro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cadastro"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnCadastrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCadastro">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <EditText
+                android:id="@+id/txbNameCad"
+                android:layout_width="315dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/background_textbox"
+                android:ems="10"
+                android:textColorHint="#333333"
+                android:hint="Nome Completo"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="16dp" />
+
+            <EditText
+                android:id="@+id/txbCPFCad"
+                android:layout_width="315dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/background_textbox"
+                android:ems="10"
+                android:textColorHint="#333333"
+                android:hint="CPF"
+                android:inputType="number"
+                android:paddingHorizontal="16dp" />
+
+            <EditText
+                android:id="@+id/txbDateCad"
+                android:layout_width="315dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/background_textbox"
+                android:ems="10"
+                android:textColorHint="#333333"
+                android:hint="Data de Nascimento"
+                android:inputType="number"
+                android:paddingHorizontal="16dp" />
+
+            <EditText
+                android:id="@+id/txbTelefoneCad"
+                android:layout_width="315dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/background_textbox"
+                android:ems="10"
+                android:hint="Telefone"
+                android:textColorHint="#333333"
+                android:inputType="phone"
+                android:paddingHorizontal="16dp" />
+
+            <EditText
+                android:id="@+id/txbEmailCad"
+                android:layout_width="315dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/background_textbox"
+                android:ems="10"
+                android:hint="E-mail"
+                android:inputType="textEmailAddress"
+                android:textColorHint="#333333"
+                android:paddingHorizontal="16dp" />
+
+            <EditText
+                android:id="@+id/txbSenhaCad"
+                android:layout_width="315dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/background_textbox"
+                android:ems="10"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                android:textColorHint="#333333"
+                android:paddingHorizontal="16dp" />
+
+            <EditText
+                android:id="@+id/txbConfirmaSenhaCad"
+                android:layout_width="315dp"
+                android:layout_height="50dp"
+                android:background="@drawable/background_textbox"
+                android:ems="10"
+                android:hint="Confirmar Senha"
+                android:inputType="textPassword"
+                android:textColorHint="#333333"
+                android:paddingHorizontal="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="265dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/botao_arredondado"
+        android:text="Cadastrar"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

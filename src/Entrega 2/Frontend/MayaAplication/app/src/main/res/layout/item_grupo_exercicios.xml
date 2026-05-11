@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_marginHorizontal="26dp"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/imgBackground"
+        android:layout_width="360dp"
+        android:layout_height="170dp"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_exe1_btn" />
+
+    <TextView
+        android:id="@+id/txtDia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Dia da Semana"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintEnd_toStartOf="@+id/imgIlustracao"
+        app:layout_constraintStart_toStartOf="@+id/imgBackground"
+        app:layout_constraintTop_toTopOf="@+id/imgBackground" />
+
+    <TextView
+        android:id="@+id/txtQuantidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="0 Exercícios"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/txtDia"
+        app:layout_constraintTop_toBottomOf="@+id/txtDia" />
+
+    <TextView
+        android:id="@+id/txtTempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tempo: 0 Min"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="@+id/txtQuantidade"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuantidade" />
+
+    <Button
+        android:id="@+id/btnOpen"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/white"
+        android:text="OPEN"
+        android:textColor="#32C0D2"
+        android:layout_marginTop="6dp"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintStart_toStartOf="@+id/txtTempo"
+        app:layout_constraintTop_toBottomOf="@+id/txtTempo" />
+
+    <ImageView
+        android:id="@+id/imgIlustracao"
+        android:layout_width="157dp"
+        android:layout_height="123dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBackground"
+        app:layout_constraintEnd_toEndOf="@+id/imgBackground"
+        app:layout_constraintTop_toTopOf="@+id/imgBackground"
+        app:srcCompat="@drawable/exe1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

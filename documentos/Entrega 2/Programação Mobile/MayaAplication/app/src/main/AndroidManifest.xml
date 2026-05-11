@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Aplicativo_Maya"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
+
+        <activity
+            android:name=".Login_Maya"
+            android:exported="false" />
+
+        <activity
+            android:name=".cadastro"
+            android:exported="false" />
+
+        <activity
+            android:name=".ListaExercicioActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Aplicativo_Maya.WhiteWindow" />
+
+        <activity
+            android:name=".ExercicioInActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Aplicativo_Maya.WhiteWindow" />
+
+        <activity
+            android:name=".ChatTicketActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AdminSimuladorActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DetalhesAgendamentoActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Perfil"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="maya_chat_alerts" />
+
+        <service
+            android:name=".MayaFirebaseMessagingService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

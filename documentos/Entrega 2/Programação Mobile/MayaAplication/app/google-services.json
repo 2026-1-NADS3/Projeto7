@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "942139722605",
+    "firebase_url": "https://mayaticketsystem-default-rtdb.firebaseio.com",
+    "project_id": "mayaticketsystem",
+    "storage_bucket": "mayaticketsystem.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942139722605:android:01a7c2862e81a1ede86864",
+        "android_client_info": {
+          "package_name": "com.example.aplicativo_maya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_UK3QSWqpXxL4CO7ZL5l7rb31ezdOEZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
