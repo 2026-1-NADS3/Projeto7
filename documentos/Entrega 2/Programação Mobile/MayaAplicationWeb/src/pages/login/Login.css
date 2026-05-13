@@ -1,0 +1,210 @@
+/* ==========================================================================
+   TELA DE LOGIN - ESTILO MAYA
+   ========================================================================== */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Fundo neutro e limpo, combinando com o dashboard */
+  background-color: #f4f6f8; 
+  padding: 20px;
+}
+
+.login-card {
+  background: #ffffff;
+  border-radius: 20px; /* Bordas bem redondas combinando com o App */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ícone no topo do form */
+.login-logo {
+  margin-bottom: 20px;
+}
+
+.logo-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #2EC4B6; /* Cor base da Maya */
+  box-shadow: 0 4px 10px rgba(46, 196, 182, 0.4);
+}
+
+.login-card h1 {
+  text-align: center;
+  color: #111827;
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.login-subtitle {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+
+.login-card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Campos de Input no estilo "Pill" do Android (bg_pill_white_shadow) */
+.input-pill {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 30px; /* Arredondamento Pill */
+  font-size: 15px;
+  color: #333333;
+  background-color: #fcfcfc;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+  transition: all 0.3s ease;
+}
+
+.input-pill::placeholder {
+  color: #9ca3af;
+}
+
+.input-pill:focus {
+  outline: none;
+  border-color: #2EC4B6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.15);
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+.login-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.login-options input[type="checkbox"] {
+  accent-color: #2EC4B6; /* Cor do checkbox */
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Botão Principal */
+.btn-login-pill {
+  width: 100%;
+  padding: 14px;
+  background-color: #2EC4B6;
+  color: white;
+  border: none;
+  border-radius: 30px; /* Arredondamento Pill */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(46, 196, 182, 0.3);
+}
+
+.btn-login-pill:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(46, 196, 182, 0.4);
+  background-color: #28b0a3;
+}
+
+.btn-login-pill:disabled {
+  background-color: #9ca3af;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* ==========================================================================
+   SISTEMA DE TOAST NOTIFICATIONS (O VISUAL ELEGANTE)
+   ========================================================================== */
+.maya-toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.maya-toast {
+  pointer-events: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-left: 6px solid #2EC4B6;
+  
+  animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.maya-toast.error {
+  border-left-color: #ef4444;
+}
+
+.maya-toast.closing {
+  animation: slideOutRight 0.3s ease-in forwards;
+}
+
+.maya-toast-content {
+  padding: 16px;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.maya-toast-progress {
+  height: 4px;
+  background: #2EC4B6;
+  width: 100%;
+  transform-origin: left;
+  animation: shrinkProgress 3000ms linear forwards;
+}
+
+.maya-toast.error .maya-toast-progress {
+  background: #ef4444;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(120%); opacity: 0; }
+}
+
+@keyframes shrinkProgress {
+  from { width: 100%; }
+  to { width: 0%; }
+}

@@ -1,0 +1,196 @@
+/* ==========================================================================
+   MELHORIAS DE VISIBILIDADE (SOMBRAS E CONTAINERS)
+   ========================================================================== */
+
+/* Sombras aplicadas aos formulários e painéis para saltar da tela */
+.shadow-container {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.table-container {
+  overflow: hidden; /* Mantém a borda arredondada na tabela */
+  margin-top: 15px;
+}
+
+.table-container table {
+  margin: 0; /* Remove margem extra da tabela dentro do container */
+}
+
+/* Campos de Input mais destacados e elegantes */
+.input-shadow {
+  border: 1px solid #e2e8f0;
+  border-bottom: 2px solid #cbd5e1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  border-radius: 6px;
+  padding: 12px 14px;
+  background-color: #f8fafc;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.input-shadow:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-bottom: 2px solid #2EC4B6;
+  box-shadow: 0 4px 8px -1px rgba(46, 196, 182, 0.15);
+}
+
+/* ==========================================================================
+   GRÁFICO DE EVOLUÇÃO DE DOR (CSS PURO)
+   ========================================================================== */
+
+.evolucao-chart-container {
+  padding: 20px;
+  margin-bottom: 30px;
+  background: #ffffff;
+}
+
+.evolucao-chart {
+  display: flex;
+  align-items: flex-end;
+  height: 180px;
+  gap: 16px;
+  overflow-x: auto;
+  padding-top: 40px; /* Espaço para o Tooltip do Hover */
+  padding-bottom: 10px;
+}
+
+/* Container de cada barra */
+.chart-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  min-width: 45px;
+}
+
+/* A barra do gráfico em si */
+.chart-bar {
+  width: 35px;
+  border-radius: 6px 6px 0 0;
+  transition: height 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  cursor: pointer;
+  box-shadow: inset 0 -4px 0 rgba(0,0,0,0.1); /* Efeito 3D na barra */
+}
+
+/* Efeito Hover (Tooltip simulado em CSS puro) */
+.chart-bar::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e293b;
+  color: #f8fafc;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  white-space: pre-wrap; /* Permite quebra de linha (\n) */
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, top 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.chart-bar:hover {
+  filter: brightness(1.1);
+}
+
+.chart-bar:hover::after {
+  opacity: 1;
+  top: -55px; /* Sobe um pouquinho ao aparecer */
+}
+
+.chart-label {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   SISTEMA DE TOAST NOTIFICATIONS (POP-UPS ANIMADOS)
+   ========================================================================== */
+
+.maya-toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none; /* Permite clicar através dos espaços vazios */
+}
+
+.maya-toast {
+  pointer-events: auto; /* Reativa o clique apenas em cima do toast */
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-left: 6px solid #2EC4B6; /* Cor de Sucesso padrão */
+  
+  /* Animação suave de entrada (Curve) */
+  animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.maya-toast.error {
+  border-left-color: #ef4444; /* Vermelho para erros */
+}
+
+/* Acionado pelo React na hora de fechar */
+.maya-toast.closing {
+  animation: slideOutRight 0.3s ease-in forwards;
+}
+
+.maya-toast-content {
+  padding: 16px;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* A Barra que vai diminuindo */
+.maya-toast-progress {
+  height: 4px;
+  background: #2EC4B6;
+  width: 100%;
+  transform-origin: left;
+  /* Duração da notificação: 3 segundos na tela */
+  animation: shrinkProgress 3000ms linear forwards;
+}
+
+.maya-toast.error .maya-toast-progress {
+  background: #ef4444;
+}
+
+/* Keyframes (Animações Matemáticas) */
+@keyframes slideInRight {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(120%); opacity: 0; }
+}
+
+@keyframes shrinkProgress {
+  from { width: 100%; }
+  to { width: 0%; }
+}

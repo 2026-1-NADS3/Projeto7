@@ -1,0 +1,219 @@
+/* ==========================================================================
+   SIDEBAR - TEMA ESCURO COM REALCE MAYA (RESPONSIVO)
+   ========================================================================== */
+
+/* Botão de abrir o menu no Mobile (Hambúrguer) */
+.mobile-toggle {
+  display: none; /* Escondido no desktop */
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 998;
+  background-color: #2c3e50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+}
+
+.mobile-toggle:hover {
+  background-color: #2EC4B6;
+}
+
+/* Fundo escuro quando o menu está aberto no mobile */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px); /* Efeito de desfoque moderno */
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.visible {
+  display: block;
+  opacity: 1;
+}
+
+/* Sidebar Principal */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  background-color: #2c3e50;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out; /* Suavidade ao abrir/fechar */
+}
+
+/* Área da Logo */
+.sidebar-header {
+  position: relative;
+  padding: 30px 20px 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Botão de fechar (X) - Apenas Mobile */
+.close-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 2rem;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #ff6b6b;
+}
+
+/* Menu de Navegação */
+.nav-menu {
+  list-style: none;
+  padding: 24px 16px;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+/* Itens de Navegação */
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.nav-icon {
+  margin-right: 12px;
+  font-size: 1.15rem;
+  transition: transform 0.2s;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.nav-item:hover .nav-icon {
+  transform: scale(1.1);
+}
+
+.nav-item.active {
+  background-color: #2EC4B6;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(46, 196, 182, 0.3);
+  transform: none;
+}
+
+.nav-item.active .nav-icon {
+  color: #ffffff;
+}
+
+/* Rodapé / Botão Sair */
+.sidebar-footer {
+  padding: 20px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+}
+
+.logout-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(231, 76, 60, 0.15);
+  color: #ff6b6b;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #e74c3c;
+  color: #ffffff;
+  border-color: #e74c3c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.25);
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVIDADE)
+   ========================================================================== */
+
+/* Tablets (Telas médias) */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 240px;
+  }
+}
+
+/* Smartphones (Telas pequenas) */
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block; /* Mostra o botão hamburguer */
+  }
+
+  .close-btn {
+    display: block; /* Mostra o botão de fechar dentro da sidebar */
+  }
+
+  .sidebar {
+    transform: translateX(-100%); /* Esconde a sidebar fora da tela por padrão */
+    width: 260px;
+    max-width: 80vw; /* Garante que não ocupe a tela inteira em celulares muito pequenos */
+  }
+
+  /* Classe adicionada via React quando o menu está aberto */
+  .sidebar.open {
+    transform: translateX(0); /* Traz a sidebar de volta para a tela */
+  }
+  
+  .sidebar-header {
+    justify-content: flex-start;
+  }
+}

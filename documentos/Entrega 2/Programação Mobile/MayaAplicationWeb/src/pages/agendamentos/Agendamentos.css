@@ -1,0 +1,415 @@
+.section-header h3 {
+  font-size: 1.3rem;
+  color: var(--primary);
+}
+
+.section-header h4 {
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.busca-wrapper {
+  margin-bottom: 18px;
+}
+
+.busca-input {
+  width: 100%;
+  max-width: 420px;
+  padding: 9px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.93rem;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.busca-input:focus {
+  border-color: var(--primary);
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px;
+}
+
+thead th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  color: #888;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+tbody tr:hover {
+  background: #f7f8fa;
+}
+
+tbody td {
+  padding: 12px;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.agendamento-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  gap: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
+}
+
+.agendamento-card:hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.09);
+}
+
+.agendamento-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.agendamento-data {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.agendamento-obs {
+  font-size: 0.87rem;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.agendamento-acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.badge-agendado {
+  background: #e8f4fd;
+  color: #2980b9;
+}
+
+.badge-concluido {
+  background: #e8f8f0;
+  color: #27ae60;
+}
+
+.badge-cancelado {
+  background: #fdf0ed;
+  color: #e74c3c;
+}
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 0.82rem;
+}
+
+.linha-agendamento {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.form-group {
+  flex: 1 1 140px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.form-group input,
+.form-group select {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary);
+}
+
+.obs-group {
+  flex: 2 1 100%;
+}
+
+.form-hint {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 4px;
+  display: block;
+}
+
+.form-error {
+  color: #e74c3c;
+  font-size: 0.88rem;
+  margin-top: 6px;
+}
+
+.gaveta {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.gaveta > summary {
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 0.93rem;
+  cursor: pointer;
+  color: var(--primary);
+  background: #f7f8fa;
+  user-select: none;
+  list-style: none;
+  outline: none;
+}
+
+.gaveta > summary::-webkit-details-marker {
+  display: none;
+}
+
+.gaveta > summary:hover {
+  background: #eef0f3;
+}
+
+.gaveta-content {
+  padding: 20px 18px;
+  background: #fff;
+  border-top: 1px solid var(--border);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9000;
+  animation: fadeIn 0.15s ease;
+  padding: 16px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.modal-box h4 {
+  margin-bottom: 14px;
+  color: var(--primary);
+  font-size: 1.15rem;
+}
+
+.modal-info {
+  font-size: 0.88rem;
+  color: #555;
+  background: #f7f8fa;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.td-center { text-align: center; }
+.td-muted  { color: #888; font-size: 0.92rem; padding: 8px 0; }
+.td-error  { color: red; }
+
+.page-fade {
+  animation: fadeIn 0.2s ease;
+}
+
+@media (max-width: 1024px) {
+  .busca-input {
+    max-width: 100%;
+  }
+
+  .agendamento-obs {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .section-header h4 {
+    font-size: 1rem;
+  }
+
+  table {
+    min-width: unset;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tbody tr {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+  }
+
+  table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 4px;
+    font-size: 0.88rem;
+    border: none;
+  }
+
+  table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #888;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+    margin-right: 10px;
+  }
+
+  .linha-agendamento {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-group {
+    width: 100%;
+    flex: unset;
+  }
+
+  .obs-group {
+    flex: unset;
+  }
+
+  .agendamento-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 16px;
+  }
+
+  .agendamento-acoes {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .modal-box {
+    padding: 24px 18px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .gaveta > summary {
+    font-size: 0.9rem;
+    padding: 12px 14px;
+  }
+
+  .gaveta-content {
+    padding: 16px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .badge {
+    font-size: 0.72rem;
+    padding: 3px 10px;
+  }
+
+  .btn-sm {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .agendamento-data {
+    font-size: 0.93rem;
+  }
+}
